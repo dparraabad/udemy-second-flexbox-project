@@ -72,32 +72,40 @@ body h1 {
 
 .header__shopping--car:hover .content {
   display: block;
-  max-width: 50rem;
+  max-width: 100rem;
   padding: 2rem;
   position: absolute;
   right: 0;
   background-color: #F2F2F2;
 }
 
-.header__shopping--car:hover .content .list {
+.header__shopping--car:hover .content .title {
   display: grid;
   grid-template-columns: .2fr .7fr .1fr;
-  grid-column-gap: 2rem;
-  grid-row-gap: 1.2rem;
-}
-
-.header__shopping--car:hover .content .list .title {
+  grid-column-gap: 5rem;
+  padding-bottom: 1rem;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
 }
 
-.header__shopping--car:hover .content .list img {
+.header__shopping--car:hover .content .list-courses {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.header__shopping--car:hover .content .list-courses .item-course {
+  display: grid;
+  grid-template-columns: .2fr .7fr .1fr;
+  column-gap: 2rem;
+}
+
+.header__shopping--car:hover .content .list-courses img {
   width: 8rem;
   height: 6rem;
 }
 
-.header__shopping--car:hover .content .list .price {
+.header__shopping--car:hover .content .list-courses .price {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
