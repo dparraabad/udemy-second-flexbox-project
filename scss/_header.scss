@@ -36,10 +36,11 @@
     right: 0;
     background-color: $gray;
 
+
     .title {
       display: grid;
-      grid-template-columns: .2fr .7fr .1fr;
-      grid-column-gap: 5rem;
+      grid-template-columns: .2fr .6fr .1fr .05fr .05fr;
+      grid-column-gap: 1.5rem;
       padding-bottom: 1rem;
       text-align: center;
       text-transform: uppercase;
@@ -51,8 +52,9 @@
 
       .item-course {
         display: grid;
-        grid-template-columns: .2fr .7fr .1fr;
-        column-gap: 2rem;
+        grid-template-columns: .2fr .6fr .1fr .05fr .05fr;
+        column-gap: 1.2rem;
+        align-items: center;
       }
 
       img {
@@ -66,6 +68,16 @@
         font-weight: 700;
         color: green;
       }
+
+      .delete-course {
+        height: 2.3rem;
+        padding: 5px 10px;
+        background-color: red;
+        border-radius: 50%;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+      }
     }
 
     button {
@@ -75,5 +87,17 @@
       outline: none;
       @include button($principal_color);
     }
-  }
+
+    @include desktop() {
+      .title {
+        grid-column-gap: 4rem;
+      }
+      .list-courses {
+        .item-course {
+          column-gap: 3.5rem;
+        }
+      }
+
+    }
+  }  
 }
