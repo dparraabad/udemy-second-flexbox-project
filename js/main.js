@@ -16,6 +16,13 @@ loadEventListener();
 //Functions
 function loadEventListener() {
 
+    // Load Page
+    document.addEventListener('DOMContentLoaded', () => {
+        carArticles = JSON.parse(localStorage.getItem('shopCar')) || [];
+        
+        showShopCar();
+    });
+    
     // Add course
     addCourseBtn.addEventListener('click', addCourse);
 
@@ -74,46 +81,53 @@ function showShopCar() {
 
         listCourses.appendChild(row);
     });
+
+    // Save information
+    syncStorage();
 }
 
-function showCourseDetails (course) {
 
+function showCourseDetails (course) {
+    
     const infoCourse = {
         image: course.querySelector('img').src,
         title: course.querySelector('.info-course h4').textContent,
         price: course.querySelector('.info-course .price .offer').textContent,
         id: course.querySelector('.info-course a').getAttribute('data-id'),
         quantity: 1,
-
+        
     }
-
+    
     const exists = carArticles.some( course => course.id === infoCourse.id );
-
+    
     if(exists) {
-
+        
         const courses = carArticles.map( course => {
             if(course.id === infoCourse.id) {
                 course.quantity++;
-
+                
                 return course;
             } 
             else {
                 return course;
             }
-
+            
         });
-
+        
         carArticles = [...carArticles];
     } else {
         carArticles = [...carArticles, infoCourse];
     }
-
+    
     showShopCar();
 }
-
 
 function clearShopCar() {
     while(listCourses.firstChild) {
         listCourses.removeChild(listCourses.firstChild);
     }
+}
+
+function syncStorage() {
+    localStorage.setItem('shopCar', JSON.stringify(carArticles));
 }
